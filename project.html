@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --dark-bg: #0a0a0f;
+            --dark-card: #13131a;
+            --dark-border: #1f1f2e;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --light-border: #e2e8f0;
+            --text-dark: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-light: #1e293b;
+            --text: #1e293b;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-2: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            --gradient-3: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
+            --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--light-bg);
+            --card-bg: var(--light-card);
+            --border: var(--light-border);
+            --text: var(--text-light);
+            --text-secondary: #64748b;
+            --hero-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--light-bg);
+            min-height: 100vh;
+            color: var(--text);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] body {
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hero-bg);
+            transition: background 0.5s ease;
+        }
+
+        [data-theme="dark"] .bg-pattern::before {
+            background: var(--gradient-hero);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-1);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-2);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-3);
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 24px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        [data-theme="light"] .badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-dark);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            animation: slideDown 0.6s ease-out 0.1s backwards;
+        }
+
+        [data-theme="light"] h1 {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: slideDown 0.6s ease-out 0.2s backwards;
+        }
+
+        [data-theme="light"] .subtitle {
+            color: #64748b;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Controls Bar */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
+            padding: 20px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            animation: slideUp 0.6s ease-out 0.3s backwards;
+        }
+
+        [data-theme="light"] .controls-bar {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: var(--light-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .search-box input {
+            background: #f1f5f9;
+            color: #1e293b;
+            border-color: #e2e8f0;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        [data-theme="light"] .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        [data-theme="light"] .search-box input:focus {
+            background: #fff;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="light"] .search-box i {
+            color: #94a3b8;
+        }
+
+        .search-box input:focus + i {
+            color: var(--primary);
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .view-btn {
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        [data-theme="light"] .view-btn {
+            border-color: #e2e8f0;
+            color: #64748b;
+        }
+
+        .view-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .view-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        .view-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.1rem;
+        }
+
+        [data-theme="light"] .theme-toggle {
+            border-color: #e2e8f0;
+            color: #64748b;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: #f1f5f9;
+            color: #f59e0b;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            animation: fadeInCard 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        [data-theme="light"] .project-card {
+            background: var(--light-card);
+            border-color: var(--light-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.15s; }
+        .project-card:nth-child(3) { animation-delay: 0.2s; }
+        .project-card:nth-child(4) { animation-delay: 0.25s; }
+        .project-card:nth-child(5) { animation-delay: 0.3s; }
+        .project-card:nth-child(6) { animation-delay: 0.35s; }
+        .project-card:nth-child(7) { animation-delay: 0.4s; }
+        .project-card:nth-child(8) { animation-delay: 0.45s; }
+        .project-card:nth-child(9) { animation-delay: 0.5s; }
+
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card.list-view {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .project-card.list-view:hover {
+            transform: translateY(0) scale(1.01);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .status-badge.popular {
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+        }
+
+        .status-badge.new {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .status-badge.updated {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Project Header */
+        .project-header {
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .project-header {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover .project-header::before {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .project-title {
+            color: #fff;
+        }
+
+        .project-title i {
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        [data-theme="light"] .project-title i {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        [data-theme="light"] .project-link {
+            background: var(--primary);
+            color: white;
+        }
+
+        .project-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(4px);
+        }
+
+        [data-theme="light"] .project-link:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Project Content */
+        .project-content {
+            padding: 24px 28px;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .project-stats {
+            border-bottom-color: #e2e8f0;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        [data-theme="dark"] .stat {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .stat i {
+            color: var(--primary);
+        }
+
+        .project-description {
+            color: #64748b;
+            line-height: 7;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        [data-theme="dark"] .project-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        [data-theme="light"] .tag {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        [data-theme="light"] .tag:hover {
+            background: #e0e7ff;
+            color: var(--primary);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 24px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        [data-theme="dark"] .no-results h3 {
+            color: #fff;
+        }
+
+        .no-results p {
+            color: #64748b;
+        }
+
+        [data-theme="dark"] .no-results p {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-links a {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.2rem;
+        }
+
+        [data-theme="light"] .social-links a {
+            background: white;
+            border-color: #e2e8f0;
+            color: #64748b;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Space Mono', monospace;
+        }
+
+        [data-theme="light"] .copyright {
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            header {
+                margin-bottom: 40px;
+                padding-top: 20px;
+            }
+
+            .controls-bar {
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .view-controls {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .project-header {
+                padding: 20px;
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .project-stats {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .project-card.list-view {
+                flex-direction: column;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body data-theme="dark" style="transition: background 0.5s, color 0.5s;">
+    <div class="bg-pattern">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="badge">
+                <i class="fas fa-sparkles"></i>
+                <span>Portfolio</span>
+            </div>
+            <h1>My Projects</h1>
+            <p class="subtitle">Exploring innovation through code. A collection of projects showcasing creativity and technical expertise.</p>
+        </header>
+
+        <div class="controls-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search projects, tags, or descriptions...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="view-controls">
+                <button class="view-btn active" id="gridViewBtn" title="Grid View">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button class="view-btn" id="listViewBtn" title="List View">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+            <div class="project-card" data-project="canvas-game" style="transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                <span class="status-badge popular">Popular</span>
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-gamepad"></i>
+                        Canvas Game
+                    </div>
+                    <a href="../../Canvas-game/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 1.2k views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 45 stars</span>
+                    </div>
+                    <p class="project-description">An interactive canvas-based game project demonstrating advanced JavaScript and HTML5 Canvas skills with smooth animations.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Canvas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="cli-tool">
+                <span class="status-badge new">New</span>
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-terminal"></i>
+                        CLI Tool
+                    </div>
+                    <a href="../../cli/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 856 views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 32 stars</span>
+                    </div>
+                    <p class="project-description">A powerful command-line interface tool built for efficiency and automation with a modern CLI experience.</p>
+                    <div class="project-tags">
+                        <span class="tag">CLI</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="css-projects">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-paint-brush"></i>
+                        CSS Projects
+                    </div>
+                    <a href="../../CSS/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 2.1k views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 78 stars</span>
+                    </div>
+                    <p class="project-description">A collection of creative CSS styling projects showcasing modern web design techniques and responsive layouts.</p>
+                    <div class="project-tags">
+                        <span class="tag">CSS</span>
+                        <span class="tag">Web Design</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="extensions">
+                <span class="status-badge updated">Updated</span>
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-puzzle-piece"></i>
+                        Extensions
+                    </div>
+                    <a href="../../extensions/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 1.5k views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 56 stars</span>
+                    </div>
+                    <p class="project-description">Browser and software extensions that enhance user experience and productivity with innovative features.</p>
+                    <div class="project-tags">
+                        <span class="tag">Extensions</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Browser</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="python">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fab fa-python"></i>
+                        Getting Started with Python
+                    </div>
+                    <a href="../../getting started with python/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 3.2k views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 120 stars</span>
+                    </div>
+                    <p class="project-description">Comprehensive Python learning projects and tutorials for beginners and intermediate developers with hands-on examples.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Tutorials</span>
+                        <span class="tag">Learning</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="icons">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-icons"></i>
+                        Icons
+                    </div>
+                    <a href="../../icons/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 980 views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 28 stars</span>
+                    </div>
+                    <p class="project-description">A curated collection of custom-designed icons for various applications and modern interfaces.</p>
+                    <div class="project-tags">
+                        <span class="tag">Icons</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">SVG</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="images">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-image"></i>
+                        Images
+                    </div>
+                    <a href="../../Images/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 720 views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 18 stars</span>
+                    </div>
+                    <p class="project-description">Image-related projects and assets, including processing tools and galleries with advanced features.</p>
+                    <div class="project-tags">
+                        <span class="tag">Images</span>
+                        <span class="tag">Processing</span>
+                        <span class="tag">Gallery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="screenshots">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-camera"></i>
+                        Screenshots
+                    </div>
+                    <a href="../../screenshots/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 540 views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 12 stars</span>
+                    </div>
+                    <p class="project-description">A collection of screenshots and tools for capturing and managing visual documentation effectively.</p>
+                    <div class="project-tags">
+                        <span class="tag">Screenshots</span>
+                        <span class="tag">Documentation</span>
+                        <span class="tag">Tools</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-project="uploads">
+                <div class="project-header">
+                    <div class="project-title">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Uploads
+                    </div>
+                    <a href="../../uploads/" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-eye"></i> 410 views</span>
+                        <span class="stat"><i class="fas fa-star"></i> 8 stars</span>
+                    </div>
+                    <p class="project-description">File upload related projects with secure and efficient handling mechanisms for modern applications.</p>
+                    <div class="project-tags">
+                        <span class="tag">Uploads</span>
+                        <span class="tag">File Handling</span>
+                        <span class="tag">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <i class="fas fa-folder-open"></i>
+            <h3>No projects found</h3>
+            <p>Try adjusting your search terms</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright">© 2024 My Projects Portfolio. All rights reserved.</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            document.body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            themeIcon.classList.toggle('fa-moon');
+            themeIcon.classList.toggle('fa-sun');
+            
+            // Add transition
+            document.body.style.transition = 'background 0.5s ease, color 0.5s ease';
+        });
+
+        // View Toggle
+        const gridViewBtn = document.getElementById('gridViewBtn');
+        const listViewBtn = document.getElementById('listViewBtn');
+        const projectGrid = document.getElementById('projectGrid');
+
+        gridViewBtn.addEventListener('click', () => {
+            projectGrid.classList.remove('list-view');
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            projectGrid.classList.add('list-view');
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const projectCards = document.querySelectorAll('.project-card');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            let visibleCount = 0;
+
+            projectCards.forEach(card => {
+                const title = card.querySelector('.project-title').textContent.toLowerCase();
+                const description = card.querySelector('.project-description').textContent.toLowerCase();
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                
+                const matches = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               tags.some(tag => tag.includes(searchTerm));
+
+                card.style.display = matches ? '' : 'none';
+                if (matches) visibleCount++;
+            });
+
+            noResults.classList.toggle('visible', visibleCount === 0);
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Tag Click to Filter
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                const tagText = e.target.textContent;
+                searchInput.value = tagText;
+                searchInput.dispatchEvent(new Event('input'));
+                
+                // Scroll to top of grid
+                projectGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Add hover sound effect (optional)
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+    </script>
+
+
+</body></html>
