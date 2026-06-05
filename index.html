@@ -3,272 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idunnu Olatunde-oseni | Portfolio</title>
+<title>Olatunde-Oseni | Portfolio</title>
     
     <!-- Bing Webmaster Tools Verification Tag -->
     <meta name="msvalidate.01" content="B39F372C4322E5FAC7801626B7F39C7C" />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="styles.css">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            color: white;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: scaleIn 0.8s ease-out;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .tagline {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-
-        .main-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 20px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .about {
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #e9ecef;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .project-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background: #e9ecef;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            color: #495057;
-        }
-
-        .contact {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            background: white;
-            color: #667eea;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-        }
-
-        .contact-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from { 
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to { 
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .main-content {
-                padding: 25px;
-            }
-
-            .section h2 {
-                font-size: 1.5em;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 40px 15px;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .tagline {
-                font-size: 1em;
-            }
-
-            .main-content {
-                padding: 20px;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Idunnu Olatunde-oseni</h1>
-            <p class="tagline">Software Developer & Cloud Engineer | UI/UX Designer</p>
-        </header>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Idunnu Olatunde-Oseni</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="main-content">
+    <div class="container">
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-title">
+                        <h1>Idunnu Olatunde-Oseni</h1>
+                        <p class="tagline">Software Developer & Cloud Engineer • UI/UX Designer</p>
+                    </div>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap">
+                        <a class="btn primary" href="mailto:olatundeidunnu@gmail.com"><i aria-hidden="true">✉</i> Email Me</a>
+                        <a class="btn" href="https://github.com/olatundeidunnu-blip" target="_blank" rel="noopener"><i aria-hidden="true">↗</i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main>
             <section class="section">
                 <h2>About Me</h2>
                 <p class="about">
-                    Professional Software Developer and Cloud Engineer with over five years of experience building secure, high-performance web applications and robust cloud infrastructure. Specializing in bridging the gap between clean code, modern UI/UX architecture, and seamless cloud deployments.
+                    Professional Software Developer and Cloud Engineer with 1+ years building secure, high-performance web applications and robust cloud infrastructure.
+                    I blend clean engineering practices with modern UI/UX architecture to deliver seamless deployments.
                 </p>
             </section>
 
@@ -288,28 +65,28 @@
 
             <section class="section">
                 <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
+                <div class="grid-3">
+                    <div class="card">
                         <h3>Cloud Deployment Automation</h3>
-                        <p>Designed and managed scalable cloud infrastructure pipelines featuring automated Git workflows and edge delivery tracking.</p>
+                        <p>Scalable cloud infrastructure pipelines with automated Git workflows and edge delivery tracking.</p>
                         <div class="project-tags">
                             <span class="tag">Cloud Engineering</span>
                             <span class="tag">Netlify</span>
                             <span class="tag">CI/CD</span>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="card">
                         <h3>Full-Stack Mobile Solution</h3>
-                        <p>Cross-platform mobile application utilizing clean architectural patterns and responsive state management layers.</p>
+                        <p>Cross-platform mobile experience with clean architectural patterns and responsive state management.</p>
                         <div class="project-tags">
                             <span class="tag">Flutter</span>
                             <span class="tag">Provider API</span>
                             <span class="tag">Mobile UX</span>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="card">
                         <h3>Developer Portfolio Dashboard</h3>
-                        <p>Modern, hyper-fast professional portfolio optimized for organic SEO architecture, custom search indexing, and performance monitoring.</p>
+                        <p>Performance-optimized portfolio with SEO-ready structure, custom search indexing, and monitoring.</p>
                         <div class="project-tags">
                             <span class="tag">HTML5</span>
                             <span class="tag">Tailwind CSS</span>
@@ -318,16 +95,27 @@
                     </div>
                 </div>
             </section>
-        </div>
 
-        <div class="contact">
-            <h2>Let's Build Something Impactful</h2>
-            <p>Looking for a seasoned engineering partner? Let's talk system capabilities or architecture design.</p>
-            <div class="contact-links">
-                <a href="mailto:olatundeidunnu@gmail.com" class="contact-btn">Email Me</a>
-                <a href="https://github.com/olatundeidunnu-blip" class="contact-btn">GitHub Profile</a>
+            <section class="section" style="margin-top:18px;">
+                <h2>Let’s Build Something Impactful</h2>
+                <p class="about" style="margin-bottom:14px;">Looking for a seasoned engineering partner? Let’s talk system capabilities or architecture design.</p>
+                <div style="display:flex; gap:12px; flex-wrap:wrap">
+                    <a class="btn primary" href="mailto:olatundeidunnu@gmail.com"><i aria-hidden="true">✉</i> Email Me</a>
+                    <a class="btn" href="https://github.com/olatundeidunnu-blip" target="_blank" rel="noopener"><i aria-hidden="true">↗</i> GitHub Profile</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Idunnu Olatunde-Oseni. All rights reserved.</p>
+            <div class="social-links">
+                <a href="mailto:olatundeidunnu@gmail.com">Email</a>
+                <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/olatundeidunnu-blip" target="_blank" rel="noopener">GitHub</a>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>

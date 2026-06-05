@@ -2,10 +2,12 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<title>Projects | Portfolio</title>
+    <meta name="description" content="Projects by Idunnu Olatunde-Oseni — search, filter, and explore." />
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -596,10 +598,11 @@
 
         .project-description {
             color: #64748b;
-            line-height: 7;
+            line-height: 1.6;
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
+
 
         [data-theme="dark"] .project-description {
             color: rgba(255, 255, 255, 0.7);
@@ -843,21 +846,60 @@
     </style>
 </head>
 <body data-theme="dark" style="transition: background 0.5s, color 0.5s;">
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="bg-pattern">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
     </div>
 
+    <main>
     <div class="container">
-        <header>
-            <div class="badge">
-                <i class="fas fa-sparkles"></i>
-                <span>Portfolio</span>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-title">
+                        <h1>Projects</h1>
+                        <p class="tagline">Exploring innovation through code. A collection of projects showcasing creativity and technical expertise.</p>
+                    </div>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap">
+                        <a class="btn primary" href="contact.html"><i aria-hidden="true">✉</i> Contact</a>
+                        <a class="btn" href="index.html"><i aria-hidden="true">↩</i> Back Home</a>
+                    </div>
+                </div>
             </div>
-            <h1>My Projects</h1>
-            <p class="subtitle">Exploring innovation through code. A collection of projects showcasing creativity and technical expertise.</p>
-        </header>
+        </section>
+
+        <section class="section" style="margin-top:18px;">
+            <div class="controls-bar" style="margin-bottom:0;">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search projects, tags, or descriptions...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="view-controls">
+                    <button class="view-btn active" id="gridViewBtn" title="Grid View">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" id="listViewBtn" title="List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="project-grid" id="projectGrid">
+
 
         <div class="controls-bar">
             <div class="search-box">
